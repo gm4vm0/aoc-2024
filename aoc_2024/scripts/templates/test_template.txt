@@ -1,3 +1,4 @@
+import unittest
 from aoc_2024.solutions.day_{file_day} import part_one, part_two
 
 
