@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "aoc-2024"
+version = "0.1.0"
+description = ""
+authors = ["sammi"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+rich = "^13.9.4"
+python-dotenv = "^1.0.1"
+
+[tool.poetry.scripts]
+add-day = "aoc_2024.scripts.add_day:main"
+run-day = "aoc_2024.scripts.run_day:main"
+test-day = "aoc_2024.scripts.test_day:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
