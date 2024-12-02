@@ -24,7 +24,18 @@ def part_one(input_data: list[str]):
 
 
 def part_two(input_data: list[str]):
-    answer = ...
+    answer = 0
+
+    left_list = []
+    right_list_freq = {}
+
+    for line in input_data:
+        left, right = line.split()
+        left_list.append(int(left))
+        right_list_freq[int(right)] = 1 + right_list_freq.get(int(right), 0)
+
+    for num in left_list:
+        answer += num * right_list_freq.get(num, 0)
 
     return answer
 
