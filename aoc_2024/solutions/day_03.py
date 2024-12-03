@@ -25,7 +25,30 @@ def part_one(input_data: list[str]):
 
 
 def part_two(input_data: list[str]):
-    answer = ...
+    answer = 0
+
+    memory = "".join(input_data)
+
+    is_enabled = True
+    pattern = re.compile(
+        r"(?P<mul>mul\(\d{1,3},\d{1,3}\))|(?P<enable>do\(\))|(?P<disable>don\'t\(\))"
+    )
+    match = pattern.search(memory)
+    while match:
+        # groups: tuple(mul, enable, disable)
+        instruction = match.groups()
+        if instruction[2]:
+            is_enabled = False
+        elif instruction[1]:
+            is_enabled = True
+
+        if is_enabled and instruction[0]:
+            digit = re.compile(r"\d+")
+            first = digit.search(instruction[0])
+            second = digit.search(instruction[0], first.end())
+            answer += int(first.group()) * int(second.group())
+
+        match = pattern.search(memory, match.end())
 
     return answer
 
