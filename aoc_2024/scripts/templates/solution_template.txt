@@ -2,6 +2,8 @@ from rich.console import Console
 
 from aoc_2024.utils.get_input_for_day import get_input_for_day
 
+console = Console()
+
 
 def part_one(input_data: list[str]):
     answer = ...
@@ -16,7 +18,6 @@ def part_two(input_data: list[str]):
 
 
 def main():
-    console = Console()
     data = get_input_for_day({day})
 
     with console.status("Computing answer for part 1...", spinner="christmas"):
