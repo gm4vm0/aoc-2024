@@ -33,3 +33,11 @@ Run tests for a specified day:
 ```bash
 poetry run test-day <day_number>
 ```
+
+### Run visualizations
+
+Run visualizations for a specified day (only for some):
+
+```bash
+poetry run vis-day <day_number>
+```
