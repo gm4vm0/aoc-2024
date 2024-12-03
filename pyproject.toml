@@ -14,6 +14,7 @@ python-dotenv = "^1.0.1"
 add-day = "aoc_2024.scripts.add_day:main"
 run-day = "aoc_2024.scripts.run_day:main"
 test-day = "aoc_2024.scripts.test_day:main"
+vis-day = "aoc_2024.scripts.visualize_day:main"
 
 [build-system]
 requires = ["poetry-core"]
