@@ -10,15 +10,15 @@ def part_one(input_data: list[str]):
         levels = report.split()
         if levels[0] == levels[1]:
             continue
-        isIncreasing = int(levels[0]) < int(levels[1])
-        isSafe = True
+        is_increasing = int(levels[0]) < int(levels[1])
+        is_safe = True
         for i in range(1, len(levels)):
             diff = int(levels[i]) - int(levels[i - 1])
-            if isIncreasing and diff < 1 or diff > 3:
-                isSafe = False
-            elif not isIncreasing and diff > -1 or diff < -3:
-                isSafe = False
-        answer += isSafe
+            if is_increasing and diff < 1 or diff > 3:
+                is_safe = False
+            elif not is_increasing and diff > -1 or diff < -3:
+                is_safe = False
+        answer += is_safe
 
     return answer
 
@@ -29,26 +29,26 @@ def part_two(input_data: list[str]):
     def check_safety(levels: list[str]) -> bool:
         if levels[0] == levels[1]:
             return False
-        isIncreasing = int(levels[0]) < int(levels[1])
+        is_increasing = int(levels[0]) < int(levels[1])
         for i in range(1, len(levels)):
             diff = int(levels[i]) - int(levels[i - 1])
-            if isIncreasing and diff < 1 or diff > 3:
+            if is_increasing and diff < 1 or diff > 3:
                 return False
-            elif not isIncreasing and diff > -1 or diff < -3:
+            elif not is_increasing and diff > -1 or diff < -3:
                 return False
         return True
 
     for report in input_data:
         levels = report.split()
-        isSafe = check_safety(levels)
-        if not isSafe:
+        is_safe = check_safety(levels)
+        if not is_safe:
             for i in range(len(levels)):
                 new_levels = levels.copy()
                 new_levels.pop(i)
-                isSafe = check_safety(new_levels)
-                if isSafe:
+                is_safe = check_safety(new_levels)
+                if is_safe:
                     break
-        answer += isSafe
+        answer += is_safe
 
     return answer
 
