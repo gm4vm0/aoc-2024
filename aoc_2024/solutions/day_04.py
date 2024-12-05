@@ -41,8 +41,8 @@ def part_two(input_data: list[str]):
 
     directions = [(-1, -1), (-1, 1), (1, -1), (1, 1)]
 
-    for i in range(len(input_data)):
-        for j in range(len(input_data[0])):
+    for i in range(1, len(input_data) - 1):
+        for j in range(1, len(input_data[0]) - 1):
             if input_data[i][j] != "A":
                 continue
 
@@ -52,22 +52,11 @@ def part_two(input_data: list[str]):
                 m_y, m_x = (i + direction[0], j + direction[1])
                 s_y, s_x = (i - direction[0], j - direction[1])
 
-                if (
-                    m_y < 0
-                    or m_y == len(input_data)
-                    or m_x < 0
-                    or m_x == len(input_data[0])
-                    or s_y < 0
-                    or s_y == len(input_data)
-                    or s_x < 0
-                    or s_x == len(input_data[0])
-                ):
-                    continue
-
                 if input_data[m_y][m_x] == "M" and input_data[s_y][s_x] == "S":
                     count += 1
 
             answer += count == 2
+
     return answer
 
 
