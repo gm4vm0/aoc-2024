@@ -36,7 +36,30 @@ def part_one(input_data: list[str]):
 
 
 def part_two(input_data: list[str]):
-    answer = ...
+    answer = 0
+
+    line_num = 0
+    rules = {}
+
+    while input_data[line_num]:
+        before, after = input_data[line_num].split("|")
+        if after not in rules:
+            rules[after] = []
+        rules[after].append(before)
+        line_num += 1
+
+    line_num += 1
+
+    while line_num < len(input_data):
+        pages = input_data[line_num].split(",")
+        is_incorrect = False
+        for i in range(len(pages)):
+            for j in range(len(pages) - i - 1):
+                if pages[j + 1] in rules.get(pages[j], []):
+                    is_incorrect = True
+                    pages[j], pages[j + 1] = pages[j + 1], pages[j]
+        answer += is_incorrect * int(pages[len(pages) // 2])
+        line_num += 1
 
     return answer
 
