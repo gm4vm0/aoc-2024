@@ -27,7 +27,22 @@ def part_one(input_data: list[str]):
 
 
 def part_two(input_data: list[str]):
-    answer = ...
+    answer = 0
+
+    def is_possible(value: int, operands: list[int], cur: int):
+        if not operands:
+            return cur == value
+        return (
+            is_possible(value, operands[1:], cur + operands[0])
+            or is_possible(value, operands[1:], cur * operands[0])
+            or is_possible(value, operands[1:], int(str(cur) + str(operands[0])))
+        )
+
+    for equation in input_data:
+        value, operands = equation.split(": ")
+        value = int(value)
+        operands = list(map(int, operands.split()))
+        answer += is_possible(value, operands[1:], operands[0]) * value
 
     return answer
 
@@ -41,7 +56,7 @@ def main():
 
     with console.status("Computing answer for part 2...", spinner="christmas"):
         part_two_answer = part_two(data)
-        console.print(f"[bold]:snowman: Answer to part one: {part_two_answer}")
+        console.print(f"[bold]:snowman: Answer to part two: {part_two_answer}")
 
 
 if __name__ == "__main__":
