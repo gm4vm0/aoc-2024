@@ -22,9 +22,8 @@ class Test(unittest.TestCase):
     def test_part_one(self):
         self.assertEqual(part_one(test_input), 14)
 
-    @unittest.skip("Not yet implemented")
     def test_part_two(self):
-        self.assertEqual(part_two(test_input), "x")
+        self.assertEqual(part_two(test_input), 34)
 
 
 def main():
